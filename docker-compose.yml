@@ -1,0 +1,24 @@
+version: '3'
+services:
+    react-app:
+        build: clientside
+        ports:
+            -   '3000:3000'
+        depends_on:
+            -   express-app
+    express-app:
+        build: serverside
+        ports:
+            - '3030:3030'
+        depends_on:
+            -   db
+        environment:
+            DATABASE_URL: "mongodb://monty:pass@db:27017/todolist?authSource=admin&directConnection=true"
+
+    db:
+        image: prismagraphql/mongo-single-replica:5.0.3
+        ports:
+            -   '27017:27017'
+        environment:
+            MONGO_INITDB_ROOT_USERNAME: monty
+            MONGO_INITDB_ROOT_PASSWORD: pass

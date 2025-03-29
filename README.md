@@ -5,7 +5,8 @@
 
 ---
 
-This project build by next instruments:
+This project was created using the following tool:
 - Database: mongo
-- Serverside: express, prisma(for database manipulating)
-- Clientside: react, sass
+- Backend: express, prisma(for database manipulating)
+- Frontend: react, sass
+- Devops: docker, docker compose

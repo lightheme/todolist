@@ -1,17 +1,17 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import Task from './Task';
 import CreateTaskInput from "./CreateTask";
-import {addTask, deleteTask, fetchTasks, toggleStatus} from "./tasksGateway"
+import {addTask, deleteTask, fetchTasks, toggleStatus} from "./tasksSession"
 
 class TasksList extends React.Component {
     state = {
         tasks: []
     }
 
-    onCreate = (text) => {
+    onCreate = text => {
         const newTask = {
             text,
-            done: "false"
+            done: false
         };
 
         addTask(newTask).then(resp => {
@@ -26,17 +26,9 @@ class TasksList extends React.Component {
             })
     }
 
-    componentDidMount() {
-        fetchTasks()
-            .then(tasksList => {
-                this.setState({
-                    tasks: tasksList
-                });
-            })
-    }
-
-    toggleTaskStatus = (taskId) => {
-        const { done, text } = this.state.tasks.find(task => task.id===taskId)
+    toggleTaskStatus = taskId => {
+        console.log(taskId)
+        const { done, text } = this.state.tasks.find(task => task._id===taskId)
 
         toggleStatus(text, done, taskId).then(resp => {
                 if (resp.ok) {
@@ -56,6 +48,15 @@ class TasksList extends React.Component {
             })
     }
 
+    componentDidMount() {
+        fetchTasks()
+            .then(tasksList => {
+                this.setState({
+                    tasks: tasksList
+                });
+            })
+    }
+
     render (){
 
         const sortedList = this.state.tasks
@@ -66,11 +67,10 @@ class TasksList extends React.Component {
                 <CreateTaskInput onCreate={this.onCreate}/>
                 <ul className="list">
                     {sortedList.map(task =>
-                        <Task key={task.id}
+                        <Task key={task._id}
                               {...task}
-                              onChange={this.toggleTaskStatus.bind(null, task.id)}
-                              onDelete={this.onDelete.bind(null, task.id)}
-
+                              onChange={this.toggleTaskStatus.bind(null, task._id)}
+                              onDelete={this.onDelete.bind(null, task._id)}
                         />
                     )}
                 </ul>

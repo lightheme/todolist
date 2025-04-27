@@ -2,5 +2,4 @@ serverside/.env
 serverside/node_modules
 clientside/node_modules
 serverside/build
-clientside/build
 build

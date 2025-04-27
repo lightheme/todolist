@@ -28,5 +28,4 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
-    - run: cd clientside
     - run: npm run build

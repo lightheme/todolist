@@ -8,6 +8,9 @@ on:
 
 jobs:
   build:
+    defaults: 
+      run: 
+        working-directory: clientside
     runs-on: ubuntu-latest
 
     strategy:

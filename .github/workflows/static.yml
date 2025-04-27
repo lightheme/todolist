@@ -27,9 +27,6 @@ jobs:
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
-    defaults:
-      run:
-        working-directory: ./clientside/build/
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -40,7 +37,7 @@ jobs:
         uses: actions/upload-pages-artifact@v3
         with:
           # Upload entire repository
-          path: '.'
+          path: './clientside/build/'
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4

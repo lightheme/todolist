@@ -1,6 +1,6 @@
 <p> 
-  <img src="https://s.iimg.su/s/29/YaSKwaAI68WBxclE6obvJIHMX9zqpOaFnLvaaaIR.png" width="40%">
-  <img src="https://s.iimg.su/s/29/CjnjZU0d6jVC3NaQGf0yI80U95rJ2eLTuJEPJclf.png" width="40%"">
+  <img src="images/light_todo.png" width="40%">
+  <img src="images/darktodo.png" width="40%"">
 </p>
 
 ---
